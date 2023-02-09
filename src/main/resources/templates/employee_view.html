@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Сотрудники</title>
+</head>
+<body style="background:antiquewhite">
+<div th:insert="hello"></div>
+<br><br><br>
+<form th:action="${'/employee/add'}" method="get">
+    <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 60px; height: 45px; width: 45px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>+</strong></em></button>
+</form>
+<table style="width:100%; height:100%;">
+    <tr>
+        <td style="text-align:center; vertical-align:top;">
+            <table  style="border-collapse: collapse; border: 2px solid #dddddd; width: 70%; margin-bottom: 20px;" >
+                <tr style="font-weight: bold; padding: 5px; background: #efefef; border: 3px solid #dddddd;">
+                    <th style="border: 3px solid #dddddd;">Фамилия</th>
+                    <th style="border: 3px solid #dddddd;">Имя</th>
+                    <th style="border: 3px solid #dddddd;">Отчество</th>
+                    <th style="border: 3px solid #dddddd;">Телефон</th>
+                    <th style="border: 3px solid #dddddd;">Электронная почта</th>
+                    <th style="border: 3px solid #dddddd;">Паспорт</th>
+                    <th style="border: 3px solid #dddddd;">ИНН</th>
+                    <th style="border: 3px solid #dddddd;">СНИЛС</th>
+                    <th style="border: 3px solid #dddddd;">Должность</th>
+                    <th style="border: 3px solid #dddddd;"></th>
+                </tr>
+                <tr  th:each="el : ${employee}" style="border: 3px solid #dddddd; padding: 5px;">
+                    <td th:text="${el.surname}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.name}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.middle_name}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.num_phone}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.email}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.passport}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.inn}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.snils}" style="border: 2px solid #dddddd;"></td>
+                    <td th:text="${el.getPosts().getNames()}" style="border: 2px solid #dddddd;"></td>
+                    <td><a style="color: black"  th:href="'/employee/' + ${el.id} + '/edit'">Подробнее</a></td>
+                </tr>
+            </table>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

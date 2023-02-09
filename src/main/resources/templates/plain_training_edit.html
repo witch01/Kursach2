@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение плана</title>
+</head>
+<body style="background:antiquewhite">
+<div th:insert="hello"></div>
+<br>
+<table style="width:100%; height:100%;">
+    <tr>
+        <td style="text-align:center; vertical-align:top;">
+            <form th:action="@{/plaintraining/{id}/edit(id=${plain_training.id})}" method="post" th:object="${plain_training}">
+                <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>План</strong></label>
+                <input type="text" th:value="${plain_training.getPlain()}" style="border-radius: 7px; border-color: aliceblue; width: 600px; height:100px" th:field="*{plain}" name="plain">
+                <br><br>
+                <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Тренер</strong></label>
+                <select  name="surname">
+                    <div th:each="element : ${employee}">
+                        <option th:text="${element.surname}"></option>
+                    </div>
+                </select><br><br><br>
+                <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Клиент</strong></label>
+                <select  name="phone">
+                    <div th:each="elements : ${client}">
+                        <option th:text="${elements.phone}"></option>
+                    </div>
+                </select><br><br><br>
+                <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Изменить</strong></em></button>
+            </form>
+            <div th:each="el : ${plain_training}">
+                <form th:action="'/plaintraining/' + ${el.id} + '/del'" method="post">
+                    <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Удалить</strong></em></button>
+                </form>
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

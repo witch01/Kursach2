@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление рекомендованных услуг</title>
+</head>
+<body style="background:antiquewhite">
+<div th:insert="hello"></div>
+<br>
+<table style="width:100%; height:100%;">
+    <tr>
+        <td style="text-align:center; vertical-align:top;">
+            <form th:action="${'/recomendedservices/add'}" method="post" th:object="${recomended_services}">
+                <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Рекомендованные услуги</strong></label>
+                <select  name="cent">
+                    <div th:each="element : ${services}">
+                        <option th:text="${element.cent}"></option>
+                    </div>
+                </select><br><br><br>
+                <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Клиент</strong></label>
+                <select  name="phone">
+                    <div th:each="elements : ${client}">
+                        <option th:text="${elements.phone}"></option>
+                    </div>
+                </select><br><br><br>
+                <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Добавить</strong></em></button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

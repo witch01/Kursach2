@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление клиента</title>
+</head>
+<body style="background:antiquewhite">
+<div th:insert="hello"></div>
+<br>
+<table style="width:100%; height:100%;">
+  <tr>
+    <td style="text-align:center; vertical-align:top;">
+      <form th:action = "@{/client/{id}/edit(id=${client.id})}" method="post" th:object="${client}">
+<!--        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Согласие на обработку персональных данных</strong></label>-->
+<!--        <input type="text" th:value="${client.getOkeys()}" style="border-radius: 7px; border-color: aliceblue; width: 250px; height:25px" th:field="*{okeys}" name="okeys">-->
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Фамилия</strong></label>
+        <input type="text" th:value="${client.getSurname()}" style="border-radius: 7px; border-color: aliceblue; width: 450px; height:25px" th:field="*{surname}" name="surname">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Имя</strong></label>
+        <input type="text" th:value="${client.getName()}" style="border-radius: 7px; border-color: aliceblue; width: 500px; height:25px" th:field="*{name}" name="name">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Отчество</strong></label>
+        <input type="text" th:value="${client.getMiddle_name()}" style="border-radius: 7px; border-color: aliceblue; width: 450px; height:25px" th:field="*{middle_name}" name="middle_name">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Номер телефона</strong></label>
+        <input type="number" th:value="${client.getPhone()}" style="border-radius: 7px; border-color: aliceblue; width: 400px; height:25px" th:field="*{phone}" name="phone">
+        <br><br>
+        <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Изменить</strong></em></button>
+      </form>
+      <div th:each="el : ${client}">
+        <form th:action="'/client/' + ${el.id} + '/del'" method="post">
+          <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Удалить</strong></em></button>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

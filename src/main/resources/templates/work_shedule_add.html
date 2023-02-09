@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление графика работы</title>
+</head>
+<body style="background:antiquewhite">
+<div th:insert="hello"></div>
+<br>
+<table style="width:100%; height:100%;">
+  <tr>
+    <td style="text-align:center; vertical-align:top;">
+      <form th:action="${'/workshedule/add'}" method="post" th:object="${work_shedule}">
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>День недели</strong></label>
+        <input type="text" style="border-radius: 7px; border-color: aliceblue; width: 400px; height:25px" th:field="*{day_work}" name="day_work">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Время начала</strong></label>
+        <input type="time" style="border-radius: 7px; border-color: aliceblue; width: 450px; height:25px" th:field="*{time_work}" name="time_work">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Услуга</strong></label>
+        <select  name="cent">
+          <div th:each="element : ${services}">
+            <option th:text="${element.cent}"></option>
+          </div>
+        </select><br><br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Сотрудник</strong></label>
+        <select  name="surname">
+          <div th:each="elements : ${employee}">
+            <option th:text="${elements.surname}"></option>
+          </div>
+        </select><br><br><br>
+        <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Добавить</strong></em></button>
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

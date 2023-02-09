@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление общих услуг</title>
+</head>
+<body style="background:antiquewhite">
+<div th:insert="hello"></div>
+<br><br><br><br><br><br><br>
+<table style="width:100%; height:100%;">
+  <tr>
+    <td style="text-align:center; vertical-align:top;">
+      <form th:action="${'/cityservices/add'}" method="post" th:object="${city_services}">
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Наименование</strong></label>
+        <input type="text" style="border-radius: 7px; border-color: aliceblue; width: 250px; height:30px" th:field="*{name}" name="name">
+        <br>
+        <div style="color: floralwhite" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Стоимость</strong></label>
+        <input type="number" name="cent" style="border-radius: 7px; border-color: aliceblue; width: 150px; height:30px" th:field="*{cent}">
+        <div style="color: floralwhite" th:if="${#fields.hasErrors('cent')}" th:errors="*{cent}"></div><br>
+        <br>
+        <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Добавить</strong></em></button>
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

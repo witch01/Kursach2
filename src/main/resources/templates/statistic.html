@@ -1,0 +1,45 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+    $(function () {
+        var chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'column'
+            },
+            title: {
+                text: 'Статистика посещений сайта'
+            },
+            xAxis: {
+                categories: [], // replace this with the dates of visits
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Number of Visits'
+                }
+            },
+            series: [{
+                name: 'Visits',
+                data: [] // replace this with the number of visits for each date
+            }]
+        });
+
+        // Replace the following code with a call to your server to retrieve the data
+        var visits = [
+            { date: '2020-01-01', visits: 10 },
+            { date: '2020-01-02', visits: 20 },
+            { date: '2020-01-03', visits: 30 },
+            // Add more data here
+        ];
+
+        // Update the chart with the data
+        chart.xAxis[0].setCategories(visits.map(function (visit) {
+            return visit.date;
+        }));
+        chart.series[0].setData(visits.map(function (visit) {
+            return visit.visits;
+        }));
+    });
+</script>

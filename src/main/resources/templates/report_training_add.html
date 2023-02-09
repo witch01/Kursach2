@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление плана</title>
+</head>
+<body style="background:antiquewhite">
+<div th:insert="hello"></div>
+<br>
+<table style="width:100%; height:100%;">
+  <tr>
+    <td style="text-align:center; vertical-align:top;">
+      <form th:action="${'/reporttraining/add'}" method="post" th:object="${report_training}">
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Дата тренировки</strong></label>
+        <input type="date" style="border-radius: 7px; border-color: aliceblue; width: 250px; height:25px" th:field="*{date_report}" name="date_report">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Время тренировки</strong></label>
+        <input type="time" style="border-radius: 7px; border-color: aliceblue; width: 250px; height:25px" th:field="*{time_report}" name="time_report">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Отчет</strong></label>
+        <input type="text" style="border-radius: 7px; border-color: aliceblue; width: 600px; height:100px" th:field="*{report}" name="report">
+        <br><br>
+        <label style="color:#A6372B; font-size: 20px; font-family: 'Book Antiqua'"><strong>Тренер</strong></label>
+        <select  name="surname">
+          <div th:each="element : ${employee}">
+            <option th:text="${element.surname}"></option>
+          </div>
+        </select><br><br><br>
+        <button style="background: #FFC0CB; border-color: aliceblue; border-radius: 30px; height: 30px; width: 100px; margin-bottom: 20px;" type="submit" class="btn btn-del"><em><strong>Добавить</strong></em></button>
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
